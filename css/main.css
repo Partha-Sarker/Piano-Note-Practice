@@ -1,10 +1,11 @@
 body {
-    background: gray;
+    background: lightgray;
 }
 
 .question-container{
   border-style: solid;
-  background: darkgray;
+  border-radius: .5em;
+  background: white;
   margin: 2em 0em;
   padding: 2em;
 }
@@ -19,6 +20,16 @@ body {
 
 .question-container #wrong-count{
   float: right;
+}
+
+#sheet{
+  display: flex;
+  justify-content: center; 
+}
+
+#sheet svg{
+  transform: scale(1.2);
+  padding: 2em;
 }
 
 .center-child {
@@ -65,6 +76,7 @@ body {
 }
 
 .white-key {
+    position: relative;
     z-index: 1;
     height:8em;
     width:2em;
@@ -73,6 +85,14 @@ body {
     border-radius:0 0 5px 5px;
     box-shadow:-1px 0 0 rgba(255,255,255,0.8) inset,0 0 5px #ccc inset,0 0 3px rgba(0,0,0,0.2);
     background:linear-gradient(to bottom,#eee 0%,#fff 100%)
+}
+
+.white-key span{
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  user-select: none;
 }
 
 .white-key:active {
