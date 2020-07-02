@@ -1,5 +1,5 @@
 body {
-    background: lightgray;
+  background: lightgray;
 }
 
 .question-container{
@@ -7,10 +7,11 @@ body {
   border-radius: .5em;
   background: white;
   margin: 2em 0em;
-  padding: 2em;
+  padding: 2em 2em 1em 2em;
 }
 
 .question-container h1{
+  margin: 1.7em 0em 1em 0em;
   text-align: center;
 }
 
@@ -60,31 +61,31 @@ body {
 }
 
 .keyboard-container{
-    padding: 2em;
-    border-style: solid;
-    border-color: black;
-    border-radius: .5em;
-    display: flex;
-    justify-content: center;
-    background:linear-gradient(to bottom right,rgba(0,0,0,0.3),rgba(0,0,0,0)),url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/187/vwood.png);
-    box-shadow:0 0 50px rgba(0,0,0,0.5) inset,0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5)
+  padding: 2em;
+  border-style: solid;
+  border-color: black;
+  border-radius: .5em;
+  display: flex;
+  justify-content: center;
+  background:linear-gradient(to bottom right,rgba(0,0,0,0.3),rgba(0,0,0,0)),url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/187/vwood.png);
+  box-shadow:0 0 50px rgba(0,0,0,0.5) inset,0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5)
 }
 
 .octave{
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .white-key {
-    position: relative;
-    z-index: 1;
-    height:8em;
-    width:2em;
-    margin: 0em .03em;
-    border-bottom:1px solid #bbb;
-    border-radius:0 0 5px 5px;
-    box-shadow:-1px 0 0 rgba(255,255,255,0.8) inset,0 0 5px #ccc inset,0 0 3px rgba(0,0,0,0.2);
-    background:linear-gradient(to bottom,#eee 0%,#fff 100%)
+  position: relative;
+  z-index: 1;
+  height:8em;
+  width:2em;
+  margin: 0em .03em;
+  border-bottom:1px solid #bbb;
+  border-radius:0 0 5px 5px;
+  box-shadow:-1px 0 0 rgba(255,255,255,0.8) inset,0 0 5px #ccc inset,0 0 3px rgba(0,0,0,0.2);
+  background:linear-gradient(to bottom,#eee 0%,#fff 100%)
 }
 
 .white-key span{
@@ -96,154 +97,98 @@ body {
 }
 
 .white-key:active {
-    box-shadow:2px 0 3px rgba(0,0,0,0.1) inset,-5px 5px 20px rgba(0,0,0,0.2) inset,0 0 3px rgba(0,0,0,0.2);
-    background:linear-gradient(to bottom,#fff 0%,#e9e9e9 100%)
-}
-
-.black-key {
-    z-index:2;
-    height:4em;
-    width:1em;
-    margin:0 -.55em 0 -.55em;
-    border:1px solid #000;
-    border-radius:0 0 3px 3px;
-    box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset,0 -5px 2px 3px rgba(0,0,0,0.6) inset,0 2px 4px rgba(0,0,0,0.5);
-    background:linear-gradient(45deg,#222 0%,#555 100%)
-}
-
-.black-key:active {
-    box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset,0 -2px 2px 3px rgba(0,0,0,0.6) inset,0 1px 2px rgba(0,0,0,0.5);
-    background:linear-gradient(to right,#444 0%,#222 100%)
-}
-
-
-
-
-
-
-
-/* * {
-  box-sizing:border-box
-}
-
-body {
-  background:#222
-}
-
-.set {
-  height:18.875em;
-  width:80%;
-  margin:5em auto;
-  padding:3em 0 0 3em;
-  position:relative;
-  border:1px solid #160801;
-  border-radius:1em;
-  background:linear-gradient(to bottom right,rgba(0,0,0,0.3),rgba(0,0,0,0)),url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/187/vwood.png);
-  box-shadow:0 0 50px rgba(0,0,0,0.5) inset,0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5)
-}
-
-.key-container {
-    margin:auto;
-}
-
-li {
-  margin:0;
-  padding:0;
-  list-style:none;
-  position:relative;
-  float:left
-}
-
-ul .white {
-  height:16em;
-  width:4em;
-  z-index:1;
-  border-left:1px solid #bbb;
-  border-bottom:1px solid #bbb;
-  border-radius:0 0 5px 5px;
-  box-shadow:-1px 0 0 rgba(255,255,255,0.8) inset,0 0 5px #ccc inset,0 0 3px rgba(0,0,0,0.2);
-  background:linear-gradient(to bottom,#eee 0%,#fff 100%)
-}
-
-ul .white:active {
-  border-top:1px solid #777;
-  border-left:1px solid #999;
-  border-bottom:1px solid #999;
   box-shadow:2px 0 3px rgba(0,0,0,0.1) inset,-5px 5px 20px rgba(0,0,0,0.2) inset,0 0 3px rgba(0,0,0,0.2);
   background:linear-gradient(to bottom,#fff 0%,#e9e9e9 100%)
 }
 
-.black {
-  height:8em;
-  width:2em;
-  margin:0 0 0 -1em;
+.black-key {
   z-index:2;
+  height:4em;
+  width:1em;
+  margin:0 -.55em 0 -.55em;
   border:1px solid #000;
   border-radius:0 0 3px 3px;
   box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset,0 -5px 2px 3px rgba(0,0,0,0.6) inset,0 2px 4px rgba(0,0,0,0.5);
   background:linear-gradient(45deg,#222 0%,#555 100%)
 }
 
-.black:active {
+.black-key:active {
   box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset,0 -2px 2px 3px rgba(0,0,0,0.6) inset,0 1px 2px rgba(0,0,0,0.5);
   background:linear-gradient(to right,#444 0%,#222 100%)
 }
 
-.a,.g,.f,.d,.c {
-  margin:0 0 0 -1em
+
+
+
+
+:root {
+  --border-size: 0.125rem;
+  --duration: 250ms;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --font-family: monospace;
+  --color-primary: white;
+  --color-secondary: black;
+  --color-tertiary: dodgerblue;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --space: 1rem;
 }
 
-ul li:first-child {
-  border-radius:5px 0 5px 5px
-}
-
-ul li:last-child {
-  border-radius:0 5px 5px 5px
-}
 * {
-  box-sizing:border-box
+  box-sizing: border-box;
 }
-​
-body {
-  margin:0;
-  background:#222
+
+.multi-button {
+  display: flex;
+  width: 50%;
+  box-shadow: var(--shadow) 4px 4px;
+  margin: auto;
 }
-​
-ul {
-  height:18.875em;
-  width:34em;
-  margin:5em auto;
-  padding:3em 0 0 3em;
-  position:relative;
-  border:1px solid #160801;
-  border-radius:1em;
-  background:linear-gradient(to bottom right,rgba(0,0,0,0.3),rgba(0,0,0,0)),url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/187/vwood.png);
-  box-shadow:0 0 50px rgba(0,0,0,0.5) inset,0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5)
+
+.multi-button button {
+  flex-grow: 1;
+  cursor: pointer;
+  position: relative;
+  padding: .5em;
+  /* padding:
+    calc(var(--space) / 1.125)
+    var(--space)
+    var(--space); */
+  border: var(--border-size) solid black;
+  color: var(--color-secondary);
+  background-color: var(--color-primary);
+  /* font-size: 1em; */
+  font-family: var(--font-family);
+  text-transform: lowercase;
+  text-shadow: var(--shadow) 2px 2px;
+  transition: flex-grow var(--duration) var(--ease);
 }
-​
-li {
-  margin:0;
-  padding:0;
-  list-style:none;
-  position:relative;
-  float:left
+
+.multi-button button + button {
+  border-left: var(--border-size) solid black;
+  margin-left: calc(var(--border-size) * -1);
 }
-​
-ul .white {
-  height:16em;
-  width:4em;
-  z-index:1;
-  border-left:1px solid #bbb;
-  border-bottom:1px solid #bbb;
-  border-radius:0 0 5px 5px;
-  box-shadow:-1px 0 0 rgba(255,255,255,0.8) inset,0 0 5px #ccc inset,0 0 3px rgba(0,0,0,0.2);
-  background:linear-gradient(to bottom,#eee 0%,#fff 100%)
+
+.multi-button button:hover,
+.multi-button button:focus {
+  flex-grow: 2;
+  color: white;
+  outline: none;
+  text-shadow: none;
+  background-color: var(--color-secondary);
 }
-​
-ul .white:active {
-  border-top:1px solid #777;
-  border-left:1px solid #999;
-  border-bottom:1px solid #999;
-  box-shadow:2px 0 3px rgba(0,0,0,0.1) inset,-5px 5px 20px rgba(0,0,0,0.2) inset,0 0 3px rgba(0,0,0,0.2);
-  background:linear-gradient(to bottom,#fff 0%,#e9e9e9 100%)
-} */
+
+.multi-button button:focus {
+  outline: var(--border-size) dashed var(--color-primary);
+  outline-offset: calc(var(--border-size) * -3);
+}
+
+.multi-button:hover button:focus:not(:hover) {
+  flex-grow: 1;
+  color: var(--color-secondary);
+  background-color: var(--color-primary);
+  outline-color: var(--color-tertiary);
+}
+
+.multi-button button:active {
+  transform: translateY(var(--border-size));
+}

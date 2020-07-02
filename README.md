@@ -1,3 +1,5 @@
 # Piano-Note-Practice
 Simple js app to practice piano note.
-![](home.png)
+![](demo/1.png)
+![](demo/2.png)
+![](demo/3.png)

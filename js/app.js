@@ -1,13 +1,39 @@
 $(document).ready(function () {
-    var sheet = true;
+    var sheet = false;
     var currentSheetNote = '';
     var correct = 0, wrong = 0;
     var correctCount = $('#correct-count');
     var wrongCount = $('#wrong-count');
     var playButton = $('#play-button');
     var note = $('#note');
+    var jq_noteButton = $('#note-button');
+    var jq_sheetButton = $('#sheet-button');
+    var jq_sheet = $('#sheet');
+
+    if(sheet)
+        jq_sheet.slideDown();
+    else
+        note.slideDown();
 
     stopPlaying();
+
+    jq_noteButton.click(function (e) { 
+        if(!sheet)
+            return;
+        
+        sheet = false;
+        jq_sheet.slideUp();
+        note.slideDown();
+    });
+
+    jq_sheetButton.click(function (e) { 
+        if(sheet)
+            return;
+        
+        sheet = true;
+        note.slideUp();
+        jq_sheet.slideDown();
+    });
 
     playButton.click(function (e) {
         if(playButton.text() == 'Start'){
@@ -32,10 +58,11 @@ $(document).ready(function () {
         if(classList[0] == 'octave')
             return;
         
+        
         var pianoNote = classList[1];
         var octave = jq_target.parent().attr('class').split(' ')[1];
         var finalNote = pianoNote + '/' + octave;
-        // console.log(finalNote);
+        console.log(pianoNote);
         
 
         if(sheet == true){
@@ -50,6 +77,18 @@ $(document).ready(function () {
                 setRandomNote(note.text());
             }
             return;
+        }
+        else{
+            if(classList.includes(note.text())){
+                correct++;
+                setTextFadeIn(correctCount, 'Correct: '+correct);
+                setRandomNote();
+            }
+            else{
+                wrong++;
+                setTextFadeIn(wrongCount, 'Wrong: '+wrong);
+                setRandomNote(note.text());
+            }
         }
 
     });
@@ -80,7 +119,11 @@ $(document).ready(function () {
         var extra = extras.charAt(Math.floor(Math.random() * extras.length));
         
         finalNote = (pianoNote + extra).trim();
-        setTextFadeIn(note, finalNote);
+
+        if(!sheet)
+            setTextFadeIn(note, pianoNote);
+        else
+            note.text(finalNote);
 
 
         var clefs = ['bass', 'treble'];
@@ -102,10 +145,10 @@ $(document).ready(function () {
     }
 
     function setTextFadeIn(element, text){
-        element.text(text);
-        // element.fadeOut( function() {
-        //     element.text(text).fadeIn();
-        // });
+        // element.text(text);
+        element.fadeOut( function() {
+            element.text(text).fadeIn();
+        });
     }
 
     drawSheet();
