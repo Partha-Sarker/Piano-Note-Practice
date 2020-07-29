@@ -76,7 +76,6 @@ $(document).ready(function () {
                 setTextFadeIn(wrongCount, 'Wrong: '+wrong);
                 setRandomNote(note.text());
             }
-            return;
         }
         else{
             if(classList.includes(note.text())){
@@ -108,7 +107,10 @@ $(document).ready(function () {
 
     function setRandomNote(currentNote = ''){
         if(currentNote != ''){
-            setTextFadeIn(note, currentNote);
+            if(!sheet)
+                setTextFadeIn(note, pianoNote);
+            else
+                note.text(finalNote);
             return;
         }
         var finalNote= '';
