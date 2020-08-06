@@ -9,6 +9,7 @@ $(document).ready(function () {
     var jq_noteButton = $('#note-button');
     var jq_sheetButton = $('#sheet-button');
     var jq_sheet = $('#sheet');
+    var jq_explosion = $('.explosion');
 
     if(sheet)
         jq_sheet.slideDown();
@@ -62,35 +63,63 @@ $(document).ready(function () {
         var pianoNote = classList[1];
         var octave = jq_target.parent().attr('class').split(' ')[1];
         var finalNote = pianoNote + '/' + octave;
-        console.log(pianoNote);
+        // console.log(pianoNote);
         
 
         if(sheet == true){
             if(finalNote == currentSheetNote){
-                correct++;
-                setTextFadeIn(correctCount, 'Correct: '+correct);
-                setRandomNote();
+                onCorrectAnswer()
             }
             else{
-                wrong++;
-                setTextFadeIn(wrongCount, 'Wrong: '+wrong);
-                setRandomNote(note.text());
+                onWrongAnswer()
             }
         }
         else{
             if(classList.includes(note.text())){
-                correct++;
-                setTextFadeIn(correctCount, 'Correct: '+correct);
-                setRandomNote();
+                onCorrectAnswer()
             }
             else{
-                wrong++;
-                setTextFadeIn(wrongCount, 'Wrong: '+wrong);
-                setRandomNote(note.text());
+                onWrongAnswer();
             }
         }
 
     });
+
+    function onCorrectAnswer(){
+        correct++;
+        setTextFadeIn(correctCount, 'Correct: '+correct);
+
+        jq_explosion.toggleClass('animate-correct');
+        setTimeout(function(){
+            if(jq_explosion.hasClass('animate-correct')){
+                jq_explosion.toggleClass('animate-correct');
+                console.log('has correct');
+            }
+            if(jq_explosion.hasClass('animate-wrong')){
+                jq_explosion.toggleClass('animate-wrong');
+                console.log('has wrong');
+            }
+        }, 500)
+        setRandomNote();
+    }
+    
+    function onWrongAnswer(){
+        wrong++;
+        setTextFadeIn(wrongCount, 'Wrong: '+wrong);
+
+        jq_explosion.toggleClass('animate-wrong');
+        setTimeout(function(){
+            if(jq_explosion.hasClass('animate-correct')){
+                jq_explosion.toggleClass('animate-correct');
+                console.log('has correct');
+            }
+            if(jq_explosion.hasClass('animate-wrong')){
+                jq_explosion.toggleClass('animate-wrong');
+                console.log('has wrong');
+            }
+        }, 500)
+        setRandomNote(note.text());
+    }
 
     function startPlaying(){
         playButton.text('Stop');
@@ -123,7 +152,7 @@ $(document).ready(function () {
         finalNote = (pianoNote + extra).trim();
 
         if(!sheet)
-            setTextFadeIn(note, pianoNote);
+            setTextFadeIn(note, finalNote);
         else
             note.text(finalNote);
 
@@ -209,5 +238,7 @@ $(document).ready(function () {
         // Render voice
         voice.draw(context, stave);
     }
+
+    // jq_explosion.toggleClass('animate-correct');
 
 });
