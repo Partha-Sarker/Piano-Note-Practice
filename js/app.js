@@ -1,43 +1,57 @@
 $(document).ready(function () {
     var sheet = false;
+    var isStopped = true;
+
     var currentSheetNote = '';
     var correct = 0, wrong = 0;
     var correctCount = $('#correct-count');
     var wrongCount = $('#wrong-count');
-    var playButton = $('#play-button');
-    var note = $('#note');
+    var stopButton = $('#stop-button');
+    var jq_greetings = $("#grettings");
+    var jq_note = $('#note');
     var jq_noteButton = $('#note-button');
     var jq_sheetButton = $('#sheet-button');
     var jq_sheet = $('#sheet');
     var jq_explosion = $('.explosion');
 
-    if(sheet)
-        jq_sheet.slideDown();
-    else
-        note.slideDown();
-
     stopPlaying();
 
-    jq_noteButton.click(function (e) { 
+    drawSheet();
+
+    jq_noteButton.click(function (e) {
+        if(isStopped){
+            sheet = false;
+            startPlaying();
+            jq_note.slideDown();
+            return;
+        }
         if(!sheet)
             return;
+        console.log("note");
         
         sheet = false;
+        jq_note.slideDown();
         jq_sheet.slideUp();
-        note.slideDown();
     });
 
     jq_sheetButton.click(function (e) { 
+        if(isStopped){
+            sheet = true;
+            startPlaying();
+            jq_sheet.slideDown();
+            return;
+        }
         if(sheet)
             return;
         
+        console.log("sheet");
         sheet = true;
-        note.slideUp();
         jq_sheet.slideDown();
+        jq_note.slideUp();
     });
 
-    playButton.click(function (e) {
-        if(playButton.text() == 'Start'){
+    stopButton.click(function (e) {
+        if(stopButton.text() == 'Start'){
             startPlaying();
         }
         else{
@@ -46,7 +60,7 @@ $(document).ready(function () {
     });
 
     $('.octave').click(function (e) {
-        // if(playButton.text() != 'Stop')
+        // if(stopButton.text() != 'Stop')
         //     return;
         var jq_target = $(e.target);
         var classList = [];
@@ -75,7 +89,7 @@ $(document).ready(function () {
             }
         }
         else{
-            if(classList.includes(note.text())){
+            if(classList.includes(jq_note.text())){
                 onCorrectAnswer()
             }
             else{
@@ -118,30 +132,36 @@ $(document).ready(function () {
                 console.log('has wrong');
             }
         }, 500)
-        setRandomNote(note.text());
+        setRandomNote(jq_note.text());
     }
 
     function startPlaying(){
-        playButton.text('Stop');
+        isStopped = false;
+        stopButton.show();
+        jq_greetings.slideUp();  
         setRandomNote();
     }
 
     function stopPlaying(){
-        playButton.text('Start');
+        stopButton.hide();
+        jq_sheet.slideUp();
+        jq_note.slideUp();
+        jq_greetings.slideDown();
+        isStopped = true;
         correct = 0, wrong = 0;
         setTextFadeIn(correctCount, 'Correct: 0');
         setTextFadeIn(wrongCount, 'Wrong: 0');
-        setTextFadeIn(note, 'Here Comes The Note! Press START');
     }
 
     function setRandomNote(currentNote = ''){
         if(currentNote != ''){
             if(!sheet)
-                setTextFadeIn(note, pianoNote);
+                setTextFadeIn(jq_note, pianoNote);
             else
-                note.text(finalNote);
+                jq_note.text(finalNote);
             return;
         }
+
         var finalNote= '';
         var notes= 'ABCDEFG';
         var extras = '#b ';
@@ -152,9 +172,9 @@ $(document).ready(function () {
         finalNote = (pianoNote + extra).trim();
 
         if(!sheet)
-            setTextFadeIn(note, finalNote);
+            setTextFadeIn(jq_note, finalNote);
         else
-            note.text(finalNote);
+            jq_note.text(finalNote);
 
 
         var clefs = ['bass', 'treble'];
@@ -181,12 +201,6 @@ $(document).ready(function () {
             element.text(text).fadeIn();
         });
     }
-
-    drawSheet();
-
-    // drawNote('b/6', 'treble', ' ');
-    // drawNote('c/4', 'bass', ' ');
-
     
     function drawSheet(){
         const VF = Vex.Flow;
@@ -238,7 +252,5 @@ $(document).ready(function () {
         // Render voice
         voice.draw(context, stave);
     }
-
-    // jq_explosion.toggleClass('animate-correct');
 
 });
