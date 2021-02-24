@@ -18,7 +18,7 @@ On sheet notation mode, the same thing will happen. But instead of note, random 
 - HTML
 - CSS
 - JQuery for selection and animation
-- VexFlow for generating sheet notation ![Check Out Vexflow](https://github.com/0xfe/vexflow)
+- VexFlow for generating sheet notation [Check Out Vexflow](https://github.com/0xfe/vexflow)
 
 # Screenshots
 Home Page  
